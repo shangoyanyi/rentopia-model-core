@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rentopia.model.core.entity.User;
 import com.rentopia.model.core.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class UserController {
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	UserRepository userRepository;
@@ -22,7 +24,8 @@ public class UserController {
 	//@RequestMapping(value="/user/add", method=RequestMethod.POST)
 	@RequestMapping(value="/user/add")
 	public String postUser() {
-		User newbee = new User("newbee", "M");
+		User newbee = User.builder().name("newbee").gender("M").build();
+							
 		
 		// @NOTE: In most cases, we'll be using the save() method.
 		userRepository.save(newbee);
@@ -40,10 +43,10 @@ public class UserController {
 		
 		List<User> allUsers = userRepository.findAll();
 		
-		logger.info("find all newbees done, there are " + allUsers.size() + " newbees");
+		log.info("find all newbees done, there are " + allUsers.size() + " newbees");
 		
 		for(User user:allUsers) {
-			logger.info(user.toString());
+			log.info(user.toString());
 		}
 		
 		return allUsers;
