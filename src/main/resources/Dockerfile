@@ -1,4 +1,4 @@
-FROM java:11
+FROM adoptopenjdk:11-jre-hotspot
 VOLUME /tmp
 ADD rentopia-model-core-0.0.1-SNAPSHOT.jar app.jar
 RUN bash -c 'touch /app.jar'
