@@ -56,7 +56,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>rentopia-model-core.jar</finalName>
+		<finalName>rentopia-model-core</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
