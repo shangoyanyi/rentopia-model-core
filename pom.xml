@@ -87,7 +87,7 @@
 					<imageName>rentopia-model-core</imageName>
 <!-- 					<baseImage>java</baseImage> -->
 <!-- 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint> -->
-					<dockerDirectory>${project.basedir}/src/main/resources</dockerDirectory>
+					<dockerDirectory>${project.basedir}</dockerDirectory>
 					<resources>
 						<resource>
 						<targetPath>/</targetPath>
