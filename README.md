@@ -15,3 +15,7 @@
 2. add finalName in pom.xml
 3. add Dockerfile in root
 4. modify github actions config file, indicate the "package" action to "package docker:build"
+
+### 2022/03/15
+1. open a dockerhub repo
+2. tag and push image to dockerhub
