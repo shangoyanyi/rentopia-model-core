@@ -19,3 +19,9 @@
 ### 2022/03/15
 1. open a dockerhub repo
 2. tag and push image to dockerhub
+
+### 2022/3/20
+1. add firebase sdk
+2. connect to firebase with credential success
+3. decode idToken from authToken success
+4. [next] use authToken as a bearer token to protect api endpoints
