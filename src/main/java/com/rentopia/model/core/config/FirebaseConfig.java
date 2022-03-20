@@ -28,7 +28,9 @@ public class FirebaseConfig {
 			  .setCredentials(GoogleCredentials.fromStream(firebaseCredential))
 			  .build();
 	
-			FirebaseApp.initializeApp(options);
+			if(FirebaseApp.getApps().isEmpty()) {
+                FirebaseApp.initializeApp(options);
+            }
 			
 			log.info("firebase init success");
 	        
