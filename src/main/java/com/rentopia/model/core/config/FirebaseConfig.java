@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
+import java.util.Map;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,6 +65,13 @@ public class FirebaseConfig {
 	        /*
 	         * 2nd: read credential from environment (for build and runtime)
 	         */
+	        Map<String, String> env = System.getenv();
+	        for (String envName : env.keySet()) {
+	            System.out.format("%s=%s%n",
+	                              envName,
+	                              env.get(envName));
+	        }
+	        
 	        String firebaseCredentialStringInBase64 = System.getenv().getOrDefault("firebase-credential", "");
 			log.info("firebaseCredentialStringInBase64 = " + firebaseCredentialStringInBase64);
 			
