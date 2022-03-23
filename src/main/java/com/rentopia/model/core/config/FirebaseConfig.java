@@ -72,7 +72,7 @@ public class FirebaseConfig {
 	                              env.get(envName));
 	        }
 	        
-	        String firebaseCredentialStringInBase64 = System.getenv().getOrDefault("firebase-credential", "");
+	        String firebaseCredentialStringInBase64 = System.getenv().getOrDefault("FIREBASE_CREDENTIAL_IN_BASE64", "");
 			log.info("firebaseCredentialStringInBase64 = " + firebaseCredentialStringInBase64);
 			
 			if(!"".equals(firebaseCredentialStringInBase64)) {
