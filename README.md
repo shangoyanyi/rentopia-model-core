@@ -25,3 +25,8 @@
 2. connect to firebase with credential success
 3. decode idToken from authToken success
 4. [next] use authToken as a bearer token to protect api endpoints
+
+
+### 2022/3/24
+1. when running github action workflow, set firebase credential as a env variable
+2. read firebase credential from file(local) and env(build/runtime)
