@@ -13,9 +13,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      firebase-credential: ${{secrets.FIREBASE_CREDENTIAL_IN_BASE64}} // add this line to inject firebase-credential to env
-      
+    
 
     steps:
     - uses: actions/checkout@v2
@@ -25,6 +23,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+      # add this step to inject firebase-credential to os env
+    - name: Set up firebase credential
+      run: echo "firebase-credential=${{secrets.FIREBASE_CREDENTIAL_IN_BASE64}}" >> $GITHUB_ENV
     - name: Build with Maven
       run: mvn -B package docker:build --file pom.xml
     - name: Show images
