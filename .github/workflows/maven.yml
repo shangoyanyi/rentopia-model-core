@@ -25,7 +25,9 @@ jobs:
         cache: maven
       # add this step to inject firebase-credential to os env
     - name: Set up firebase credential
-      run: export FIREBASE_CREDENTIAL_IN_BASE64=${{secrets.FIREBASE_CREDENTIAL_IN_BASE64}}
+      run: export FIREBASE_CREDENTIAL_IN_BASE64="${{secrets.FIREBASE_CREDENTIAL_IN_BASE64}}"
+    - name: show firebase credential
+      run: echo $FIREBASE_CREDENTIAL_IN_BASE64
     - name: Build with Maven
       run: mvn -B package docker:build --file pom.xml
     - name: Show images
