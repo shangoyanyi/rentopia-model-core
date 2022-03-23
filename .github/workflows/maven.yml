@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_CREDENTIAL_IN_BASE64: ${{secrets.FIREBASE_CREDENTIAL_IN_BASE64}}
 
     steps:
     - uses: actions/checkout@v2
@@ -22,8 +24,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: export FIREBASE_CREDENTIAL_IN_BASE64
-      run: sudo export FIREBASE_CREDENTIAL_IN_BASE64="${{secrets.FIREBASE_CREDENTIAL_IN_BASE64}}"
     - name: Build with Maven
       run: mvn -B package docker:build --file pom.xml
     - name: Show images
