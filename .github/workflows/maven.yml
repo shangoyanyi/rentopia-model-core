@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      firebase-credential: ${{secrets.FIREBASE_CREDENTIAL_IN_BASE64}} // add this line to inject firebase-credential to env
+      
 
     steps:
     - uses: actions/checkout@v2
