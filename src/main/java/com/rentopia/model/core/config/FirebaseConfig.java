@@ -65,22 +65,15 @@ public class FirebaseConfig {
 	        /*
 	         * 2nd: read credential from environment (for build and runtime)
 	         */
-	        Map<String, String> env = System.getenv();
-	        for (String envName : env.keySet()) {
-	            System.out.format("%s=%s%n",
-	                              envName,
-	                              env.get(envName));
-	        }
-	        
 	        String firebaseCredentialStringInBase64 = System.getenv().getOrDefault("FIREBASE_CREDENTIAL_IN_BASE64", "");
-			log.info("firebaseCredentialStringInBase64 = " + firebaseCredentialStringInBase64);
+			log.debug("firebaseCredentialStringInBase64 = " + firebaseCredentialStringInBase64);
 			
 			if(!"".equals(firebaseCredentialStringInBase64)) {
 				String firebaseCredentialString = new String(Base64.getDecoder().decode(firebaseCredentialStringInBase64), "utf-8");
-				log.info("firebaseCredentialString = " + firebaseCredentialString);
+				log.debug("firebaseCredentialString = " + firebaseCredentialString);
 			
 				firebaseCredential = new ByteArrayInputStream(firebaseCredentialString.getBytes());
-				log.info("firebaseCredential:" + firebaseCredential);
+				log.debug("firebaseCredential:" + firebaseCredential);
 				
 				return firebaseCredential;
 			}

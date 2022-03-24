@@ -39,8 +39,6 @@ public class HelloController {
 	 */
 	@RequestMapping("/firebase")
 	public String sayFirebase(@RequestParam("token")String token) {
-		//String token = "PUT-IDTOKEN-HERE";
-		
 		log.info(token);
         if ((token == null) || "".equals(token)) {
         	return "error: no token";
