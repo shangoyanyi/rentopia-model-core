@@ -34,12 +34,12 @@ public class HelloController {
 	
 	/*
 	 * test string
-	 * http://localhost:8080/firebase
+	 * http://localhost:8080/firebase?token={firebase_idtoken}
 	 * 
 	 */
 	@RequestMapping("/firebase")
-	public String sayFirebase() {
-		String token = "PUT-IDTOKEN-HERE";
+	public String sayFirebase(@RequestParam("token")String token) {
+		//String token = "PUT-IDTOKEN-HERE";
 		
 		log.info(token);
         if ((token == null) || "".equals(token)) {
