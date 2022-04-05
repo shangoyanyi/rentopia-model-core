@@ -6,13 +6,17 @@ import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.cloud.FirestoreClient;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 public class FirebaseConfig {
 	
-	@Bean
+	@PostConstruct
 	public void initFirebaseAppBean() throws Exception {
 		try {
 			InputStream firebaseCredential = this.getFirebaseCredential();
@@ -33,12 +37,17 @@ public class FirebaseConfig {
                 FirebaseApp.initializeApp(options);
             }
 			
-			log.info("firebase init success");
+			log.info("firebase app init success");
 	        
         }catch(Exception e) {
         	log.error(e.toString());
         	throw e;
         }
+	}
+	
+	@Bean
+	public Firestore initFirestore() {
+		return FirestoreClient.getFirestore();
 	}
 	
 	
