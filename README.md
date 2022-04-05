@@ -30,3 +30,7 @@
 ### 2022/3/24
 1. when running github action workflow, set firebase credential as a env variable
 2. read firebase credential from file(local) and env(build/runtime)
+
+### 2022/4/5
+1. add firestore config 
+2. fetch data(Asset and FirestoreController) from firestore
