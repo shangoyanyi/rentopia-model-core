@@ -19,8 +19,7 @@ import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.cloud.FirestoreClient;
 import com.rentopia.model.core.entity.Asset;
-import com.rentopia.model.core.entity.User;
-import com.rentopia.model.core.repository.UserRepository;
+import com.rentopia.model.core.service.AssetService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,13 +34,13 @@ public class FirestoreController {
 	AssetService assetService;
 	
 	@RequestMapping("/asset/{id}")
-	public String findById(@RequestParam("id") String id) throws InterruptedException, ExecutionException {
+	public String findById(@RequestParam("id") String id) throws Exception {
 		Asset asset = assetService.findById(id);
 		return (asset==null)? "asset doesn't exist" : asset.toString();
 	}
 	
 	@RequestMapping("/asset/findAll")
-	public List<String> findAllAssets() throws InterruptedException, ExecutionException {
+	public List<String> findAll() throws Exception {
 		// Firestore firestore = FirestoreClient.getFirestore();
 		
 		Iterable<DocumentReference> assets = firestore.collection("asset").listDocuments();

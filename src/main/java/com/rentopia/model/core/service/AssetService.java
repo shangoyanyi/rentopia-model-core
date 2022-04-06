@@ -24,7 +24,7 @@ public class AssetService {
     /**
      * Save
      */
-    // public String save(Asset asset) throws InterruptedException, ExecutionException {        
+    // public String save(Asset asset) throws Exception {        
     //     ApiFuture<WriteResult> collectionsApiFuture = firestore.collection(COLLECTION_NAME).document(asset.getId()).set(asset);
     //     return collectionsApiFuture.get().getUpdateTime().toString();
     // }
@@ -32,9 +32,9 @@ public class AssetService {
     /**
      * FindById.
      */
-    public Asset findById(String id) throws InterruptedException, ExecutionException {
+    public Asset findById(String id) throws Exception {
         if(id == null){
-            throw new ExecutionException("invalid id: null");
+            throw new Exception("invalid id: null");
         }
 
         DocumentReference documentReference = firestore.collection(COLLECTION_NAME).document(id);
