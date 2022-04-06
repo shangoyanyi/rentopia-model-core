@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,7 +35,7 @@ public class FirestoreController {
 	AssetService assetService;
 	
 	@RequestMapping("/asset/{id}")
-	public String findById(@requestParam("id") String id) throws InterruptedException, ExecutionException {
+	public String findById(@RequestParam("id") String id) throws InterruptedException, ExecutionException {
 		Asset asset = assetService.findById(id);
 		return (asset==null)? "asset doesn't exist" : asset.toString();
 	}

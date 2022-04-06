@@ -1,7 +1,5 @@
 package com.rentopia.model.core.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.google.api.core.ApiFuture;
@@ -11,6 +9,7 @@ import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 
+import lombok.extern.slf4j.Slf4j;
 
 import com.rentopia.model.core.entity.Asset;
 
