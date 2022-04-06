@@ -29,7 +29,15 @@ public class FirestoreController {
 	
 	@Autowired
 	Firestore firestore;
+
+	@Autowired
+	AssetService assetService;
 	
+	@RequestMapping("/asset/{id}")
+	public String findById(@requestParam("id") String id) throws InterruptedException, ExecutionException {
+		Asset asset = assetService.findById(id);
+		return (asset==null)? "asset doesn't exist" : asset.toString();
+	}
 	
 	@RequestMapping("/asset/findAll")
 	public List<String> findAllAssets() throws InterruptedException, ExecutionException {
