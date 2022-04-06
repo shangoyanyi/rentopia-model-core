@@ -22,21 +22,23 @@ public class AssetService {
 	Firestore firestore;
 
     /**
-     * CREATE
+     * Save
      */
-    public String save(Asset asset) throws InterruptedException, ExecutionException {        
-        ApiFuture<WriteResult> collectionsApiFuture = firestore.collection(COLLECTION_NAME).document(asset.getId()).set(asset);
-        return collectionsApiFuture.get().getUpdateTime().toString();
-    }
+    // public String save(Asset asset) throws InterruptedException, ExecutionException {        
+    //     ApiFuture<WriteResult> collectionsApiFuture = firestore.collection(COLLECTION_NAME).document(asset.getId()).set(asset);
+    //     return collectionsApiFuture.get().getUpdateTime().toString();
+    // }
 
     /**
-     * READ
+     * FindById.
      */
     public Asset findById(String id) throws InterruptedException, ExecutionException {
-        
+        if(id == null){
+            throw new ExecutionException("invalid id: null");
+        }
+
         DocumentReference documentReference = firestore.collection(COLLECTION_NAME).document(id);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
-
         DocumentSnapshot document = future.get();
 
         Asset asset = null;
