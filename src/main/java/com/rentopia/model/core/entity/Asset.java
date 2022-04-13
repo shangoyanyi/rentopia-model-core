@@ -1,6 +1,6 @@
 package com.rentopia.model.core.entity;
 
-import com.google.cloud.firestore.DocumentReference;
+import com.google.gson.GsonBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,9 +15,14 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Asset {
+	private String id;
 	private String name;
 	private int rent;
-	private DocumentReference asset_owner;
-	private DocumentReference asset_renter;
+	private String asset_owner_id;
+	private String asset_renter_id;
+	
+	public String toJson() {
+        return new GsonBuilder().serializeNulls().create().toJson(this);
+    }
 
 }

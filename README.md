@@ -34,3 +34,6 @@
 ### 2022/4/5
 1. add firestore config 
 2. fetch data(Asset and FirestoreController) from firestore
+
+### 2022/4/13
+1. add firestore CRUD funtions and apis

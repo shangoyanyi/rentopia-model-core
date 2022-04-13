@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import javax.websocket.server.PathParam;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,31 +36,38 @@ public class FirestoreController {
 	@Autowired
 	AssetService assetService;
 	
-	@RequestMapping("/asset/{id}")
-	public String findById(@RequestParam("id") String id) throws Exception {
+	@RequestMapping("/asset/add")
+	public String save(@RequestParam("name") String name) throws Exception {
+		Asset asset = new Asset();
+		asset.setName(name);
+		
+		return assetService.save(asset);
+	}
+	
+	@RequestMapping("/asset/update/{id}")
+	public String save(@PathVariable("id") String id, @RequestParam("name") String name) throws Exception {
 		Asset asset = assetService.findById(id);
-		return (asset==null)? "asset doesn't exist" : asset.toString();
+		asset.setName(name);
+		
+		return assetService.update(asset);
+	}
+	
+	
+	@RequestMapping("/asset/delete/{id}")
+	public String deleteById(@PathVariable("id") String id) throws Exception {
+		return assetService.deleteById(id);
+	}
+	
+	
+	@RequestMapping("/asset/{id}")
+	public String findById(@PathVariable ("id") String id) throws Exception {
+		Asset asset = assetService.findById(id);
+		return (asset==null)? "asset doesn't exist" : asset.toJson();
 	}
 	
 	@RequestMapping("/asset/findAll")
-	public List<String> findAll() throws Exception {
-		// Firestore firestore = FirestoreClient.getFirestore();
-		
-		Iterable<DocumentReference> assets = firestore.collection("asset").listDocuments();
-		
-		List<String> resp = new ArrayList<String>();
-		for (DocumentReference asset : assets) {
-			  log.info("asset id: " + asset.getId());
-			  //resp.add(asset.toString());
-			  
-			  Asset assetObject = asset.get().get().toObject(Asset.class);
-			  log.info(assetObject.toString());
-			  
-			  resp.add(assetObject.toString());
-
-		}
-		
-		return resp;
+	public List<Asset> findAll() throws Exception {		
+		return assetService.findAll();
 	}
 
 }
