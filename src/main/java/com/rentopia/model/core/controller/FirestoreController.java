@@ -23,6 +23,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.cloud.FirestoreClient;
 import com.rentopia.model.core.entity.Asset;
 import com.rentopia.model.core.service.AssetService;
+import com.rentopia.model.core.service.AssetService2;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +35,7 @@ public class FirestoreController {
 	Firestore firestore;
 
 	@Autowired
-	AssetService assetService;
+	AssetService2 assetService;
 	
 	@RequestMapping("/asset/add")
 	public String save(@RequestParam("name") String name) throws Exception {

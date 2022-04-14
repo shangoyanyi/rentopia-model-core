@@ -37,3 +37,6 @@
 
 ### 2022/4/13
 1. add firestore CRUD funtions and apis
+
+### 2022/4/14
+1. make firestore CRUD functions generic 

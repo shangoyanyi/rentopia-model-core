@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity {
+public class User {
 	/*
 	@GeneratedValue 指定主鍵的生成策略。
 	TABLE：使用表儲存id值

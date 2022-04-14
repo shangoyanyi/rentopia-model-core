@@ -15,10 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Asset extends BaseEntity {
-	private String id;
+//	private String id;
 	private String name;
 	private int rent;
 	private String asset_owner_id;
-	private String asset_renter_id;
-
+	private String asset_renter_id;	
 }
